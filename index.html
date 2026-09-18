@@ -440,7 +440,8 @@
       .howsec .shead h2{font-size:22px;margin-top:11px;max-width:26ch}
       .howsec .shead .sub{font-size:13.5px;margin-top:8px}
       .howsec .howshot{margin-top:16px;padding:0;border-radius:16px}
-      :root{--heroEnd:890px}
+      :root{--heroEnd:100vh}
+      @supports (height:100dvh){:root{--heroEnd:100dvh}}
       .selftxt h2{font-size:27px}
       .selfwins{gap:10px}
       .win{padding:11px 14px;flex:1 1 0;min-width:0}
@@ -477,7 +478,13 @@
     .sec{padding:40px 0}
     .shead h2{font-size:26px;margin-top:14px}
     .shead .sub{font-size:15px;margin-top:11px}
-    .hero{padding-top:24px}
+    .hero{padding-top:24px;
+          box-sizing:border-box;min-height:100vh;
+          display:flex;flex-direction:column;justify-content:center}
+    /* dvh tracks the live viewport, so the blue still reaches the bottom
+       after the browser address bar collapses */
+    @supports (height:100dvh){.hero{min-height:100dvh}}
+    .hero>.shell:last-child{padding-bottom:34px!important}
     .hero h1{margin-top:18px}
     .hero h1 .big{font-size:38px}
     .hero h1 .lil{font-size:18px;margin-top:9px}
@@ -566,7 +573,8 @@
     .selfbtn{display:block;width:100%;box-sizing:border-box;text-align:center}
     .selfpic{position:static;width:auto;margin-top:16px;text-align:center}
     .selfpic img{margin:0 auto;max-width:250px}
-    :root{--heroEnd:748px}
+    :root{--heroEnd:100vh}
+    @supports (height:100dvh){:root{--heroEnd:100dvh}}
     /* --- sticky CTA reveals only after the hero --- */
     @keyframes ctaRise{from{opacity:0;transform:translateY(118%)}to{opacity:1;transform:translateY(0)}}
     @supports (animation-timeline: scroll()){
